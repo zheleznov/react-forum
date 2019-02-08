@@ -1,0 +1,20 @@
+.Logo {
+    float: left;
+    padding-top: 5px;
+}
+
+@media (min-width: 240px) and (max-width: 720px) {
+    .Logo {
+        padding-top: 10px;
+    }
+}
+
+header > a.Logo {
+    width: 50px;
+}
+
+@media (min-width: 240px) and (max-width: 720px) {
+    header > a.Logo {
+        width: 35px;
+    }
+}

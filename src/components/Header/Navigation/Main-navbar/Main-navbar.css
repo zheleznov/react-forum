@@ -1,0 +1,55 @@
+.navbar-item, .navbar-mobile-item {
+    display: inline-block;
+    border-right: 1px solid #3c4d6a;
+    vertical-align: middle;
+}
+
+ul .navbar-item:last-child, ul .navbar-mobile-item:last-child {
+    border-right: none;
+}
+
+.navbar-item a, .navbar-mobile-item a {
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: all .6s ease;
+    font-size: 18px;
+}
+
+@media (min-width: 240px) and (max-width: 720px) {
+    .navbar-item a, .navbar-mobile-item a {
+        padding: 10px 0px;
+    }
+}
+
+.navbar-item a:hover, .navbar-mobile-item a:hover {
+    color: #57AD8D;
+}
+
+.navbar-item a:active, .navbar-mobile-item a:active {
+    color: #57AD8D;
+}
+
+@media (min-width: 240px) and (max-width: 720px) {
+    .navbar-item, .navbar-mobile-item {
+        display: block;
+        border: none;
+        margin: 20px 0;
+    }
+}
+
+@media (min-width: 240px) and (max-width: 720px) {
+    .navbar-open .navbar-item, .navbar-open .navbar-mobile-item {
+        margin: 6px 0;
+    }
+}
+
+.signs .navbar-item, .signs .navbar-mobile-item {
+    border-right: none;
+}
+
+@media (min-width: 820px) {
+    .mobile-only, .navbar-mobile-item {
+        display: none;
+    }
+}

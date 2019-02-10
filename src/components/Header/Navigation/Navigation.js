@@ -6,7 +6,6 @@ import MainNavbar from './Main-navbar';
 function Navigation(props) {
   return (
     <nav className="navbar">
-      <UserNavbar />
       <MainNavbar />
     </nav>
   );

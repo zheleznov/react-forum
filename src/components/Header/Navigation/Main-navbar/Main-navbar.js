@@ -5,16 +5,11 @@ function MainNavbar(props) {
   return (
     <ul>
       <li className="navbar-item">
-        <a href="index.html">Home</a>
+        <a href="register.html">Register</a>
       </li>
+
       <li className="navbar-item">
-        <a href="category.html">Category</a>
-      </li>
-      <li className="navbar-item">
-        <a href="forum.html">Forum</a>
-      </li>
-      <li className="navbar-item">
-        <a href="thread.html">Thread</a>
+        <a href="login.html">Login</a>
       </li>
 
       <li className="navbar-item mobile-only">

@@ -1,24 +1,25 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 import './Main-navbar.css';
 
-function MainNavbar(props) {
+function MainNavbar() {
   return (
-    <ul>
-      <li className="navbar-item">
-        <a href="register.html">Register</a>
-      </li>
+      <ul>
+        <li className="navbar-item">
+          <NavLink to="/register" activeClassName="active">Register</NavLink>
+        </li>
 
-      <li className="navbar-item">
-        <a href="login.html">Login</a>
-      </li>
+        <li className="navbar-item">
+          <NavLink to="/login" activeClassName="active">Login</NavLink>
+        </li>
 
-      <li className="navbar-item mobile-only">
-        <a href="profile.html">My Profile</a>
-      </li>
-      <li className="navbar-item mobile-only">
-        <a href="#">Logout</a>
-      </li>
-    </ul>
+        <li className="navbar-item mobile-only">
+          <NavLink to="/profile" activeClassName="active">My Profile</NavLink>
+        </li>
+        <li className="navbar-item mobile-only">
+          <a href="#">Logout</a>
+        </li>
+      </ul>
   );
 }
 

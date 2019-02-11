@@ -1,14 +1,15 @@
-import React from 'react';
+import React, {Fragment} from 'react';
+import {Link} from 'react-router-dom';
 import logoImage from '../../../assets/logo.svg';
 import './Logo.css';
 
-// TODO: routing
-
-function Logo(props) {
+function Logo() {
   return (
-      <a href="#" className="Logo">
-        <img src={logoImage} alt="React Forum Logo"/>
-      </a>
+      <Fragment>
+        <Link to="/" className="Logo">
+          <img src={logoImage} alt="React Forum Logo"/>
+        </Link>
+      </Fragment>
   );
 }
 

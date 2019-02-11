@@ -22,7 +22,7 @@ ul .navbar-item:last-child, ul .navbar-mobile-item:last-child {
     }
 }
 
-.navbar-item a:hover, .navbar-mobile-item a:hover {
+.navbar-item a:hover, .navbar-mobile-item a:hover, .navbar-item a.active, .navbar-mobile-item a.active {
     color: #57AD8D;
 }
 

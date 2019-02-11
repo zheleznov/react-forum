@@ -1,0 +1,4 @@
+export default {
+  GET_DATA: 'GET_DATA',
+  GET_CATEGORIES: 'GET_CATEGORIES'
+};

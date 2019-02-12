@@ -1,9 +1,9 @@
 import actionTypes from '../constants/actionTypes';
 
 export default {
-  getCategories() {
+  getData() {
     return {
-      type: actionTypes.GET_CATEGORIES
+      type: actionTypes.GET_DATA
     }
   }
 };

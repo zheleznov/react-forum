@@ -1,16 +1,16 @@
 import actionTypes from '../constants/actionTypes';
 import {combineReducers} from 'redux';
-import data from '../../data';
+import fakeData from '../../data';
 
 const initialState = {
-  data: data,
+  data: fakeData,
   loading: true,
 };
 
 const dataReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.GET_CATEGORIES:
-      return state['categories'];
+    case actionTypes.GET_DATA:
+      return state;
 
     default:
       return state;
@@ -19,7 +19,7 @@ const dataReducer = (state = initialState, action) => {
 
 const loadingReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.GET_CATEGORIES:
+    case actionTypes.GET_DATA:
       return false;
 
     default:

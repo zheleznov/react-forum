@@ -39,6 +39,7 @@ class ForumListing extends React.Component {
                     url={`/forum/${forum['.key']}`}
                     title={forum.name}
                     description={forum.description}
+                    subForums={forum.subForums}
                 />
 
                 <ForumThreadsCounter
@@ -68,7 +69,15 @@ const mapStateToProps = ({data}) => {
   const categories = data['categories'];
 
   const forums = Object.keys(data['forums']).map(key => {
-    return data['forums'][key];
+    const forum = data['forums'][key];
+
+    if (forum.forums) {
+      forum.subForums = Object.keys(forum.forums).map(key => {
+        return data['forums'][key];
+      });
+    }
+
+    return forum;
   });
 
   return {

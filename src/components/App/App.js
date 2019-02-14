@@ -6,8 +6,9 @@ import actions from '../../store/actions';
 
 import Header from '../Header';
 import ErrorBoundary from '../ErrorBoundary';
+import HomePageContainer from '../../containers/HomePageContainer';
+import ThreadsPageContainer from '../../containers/ThreadsPageContainer';
 import ForumsListContainer from '../../containers/ForumsListContainer';
-import ForumListingContainer from '../../containers/ForumListingContainer';
 import PageNotFound from '../PageNotFound';
 import PageContent from '../PageContent';
 
@@ -28,8 +29,9 @@ class App extends Component {
                 <Header/>
                 <Switch>
                   <PageContent>
-                    <Route path="/" exact component={ForumsListContainer}/>
-                    <Route path="/category/:categoryId" component={ForumListingContainer}/>
+                    <Route path="/" exact component={HomePageContainer}/>
+                    <Route path="/category/:categoryId" exact component={ForumsListContainer}/>
+                    <Route path="/forum/:forumId" component={ThreadsPageContainer}/>
                   </PageContent>
                   <Route component={PageNotFound}/>
                 </Switch>

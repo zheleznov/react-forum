@@ -1,15 +1,15 @@
 import {connect} from 'react-redux';
-import ForumsList from '../../components/Forums/ForumsList';
+import HomePage from '../../components/Pages/HomePage';
 
 const mapStateToProps = ({data}) => {
   const categories = data['categories'];
   const forums = data['forums'];
 
   return {
-    forums,
     categories,
+    forums
   };
 };
 
-const ForumsListContainer = connect(mapStateToProps)(ForumsList);
-export default ForumsListContainer;
+const HomePageContainer = connect(mapStateToProps)(HomePage);
+export default HomePageContainer;

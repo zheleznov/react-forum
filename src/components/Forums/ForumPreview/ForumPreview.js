@@ -1,32 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
-import './ForumHeader.css';
+import './ForumPreview.css';
 
-const ForumHeader = (props) => {
-  let content = <p>{props.description}</p>;
+const ForumPreview = ({description, url, title, subForums}) => {
+  let content = <p>{description}</p>;
 
-  if (props.subForums) {
-    const subForums = props.subForums.map(subForum => (
+  if (subForums) {
+    const subForumsToRender = subForums.map(subForum => (
             <li><Link to={`/forum/${subForum['.key']}`}>{subForum.name}</Link></li>
         ),
     );
-    content = <ul className="subforums">{subForums}</ul>;
+    content = <ul className="subforums">{subForumsToRender}</ul>;
   }
 
   return (
       <div className="forum-details">
-        <Link className="text-xlarge" to={props.url}>{props.title}</Link>
+        <Link className="text-xlarge" to={url}>{title}</Link>
         {content}
       </div>
   );
 };
 
-ForumHeader.propTypes = {
+ForumPreview.propTypes = {
   url: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   subForums: PropTypes.array,
 };
 
-export default ForumHeader;
+export default ForumPreview;

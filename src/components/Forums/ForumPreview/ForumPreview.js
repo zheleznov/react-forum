@@ -3,22 +3,24 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import './ForumPreview.css';
 
-const ForumPreview = ({description, url, title, subForums}) => {
-  let content = <p>{description}</p>;
+const ForumPreview = ({description, url, title, subForums, classes}) => {
+  let content = <p className="forum-description">{description}</p>;
 
   if (subForums) {
     const subForumsToRender = subForums.map(subForum => (
-            <li><Link to={`/forum/${subForum['.key']}`}>{subForum.name}</Link></li>
-        ),
+        <li key={subForum['.key']}>
+          <Link to={`/forum/${subForum['.key']}`}>{subForum.name}</Link>
+        </li>
+      ),
     );
     content = <ul className="subforums">{subForumsToRender}</ul>;
   }
 
   return (
-      <div className="forum-details">
-        <Link className="text-xlarge" to={url}>{title}</Link>
-        {content}
-      </div>
+    <div className="forum-details">
+      <Link className={classes || 'text-xlarge'} to={url}>{title}</Link>
+      {content}
+    </div>
   );
 };
 

@@ -4,10 +4,9 @@ import './ForumListItem.css';
 
 import ForumPreview from '../ForumPreview';
 import ForumThreadsCounter from '../ForumThreadsCounter';
-import ForumLastThread from '../ForumLastThread';
+import ForumLastPost from '../ForumLastPost';
 
-const ForumListItem = ({forum}) => {
-
+const ForumListItem = ({forum, classes, posts, users, threads}) => {
   return (
       <div className="forum-listing">
         <ForumPreview
@@ -15,12 +14,13 @@ const ForumListItem = ({forum}) => {
             title={forum.name}
             description={forum.description}
             subForums={forum.subForums}
+            classes={classes}
         />
         <ForumThreadsCounter
             count={(forum.threads &&
                 Object.keys(forum.threads).length) || 0}
         />
-        <ForumLastThread/>
+        <ForumLastPost lastPostId={forum['lastPostId']} posts={posts} users={users} threads={threads}/>
       </div>
   );
 };

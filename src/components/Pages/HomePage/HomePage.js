@@ -5,7 +5,7 @@ import ForumsList from '../../Forums/ForumsList';
 
 class HomePage extends Component {
   render() {
-    const {categories, forums} = this.props;
+    const {categories, forums, posts, users, threads} = this.props;
 
     return (
         <Fragment>
@@ -16,6 +16,9 @@ class HomePage extends Component {
                     categories={categories}
                     forums={forums}
                     categoryId={category['.key']}
+                    posts={posts}
+                    users={users}
+                    threads={threads}
                 />
             );
           })}
@@ -26,7 +29,9 @@ class HomePage extends Component {
 
 HomePage.propTypes = {
   categories: PropTypes.object.isRequired,
-  forums: PropTypes.object.isRequired
+  forums: PropTypes.object.isRequired,
+  posts: PropTypes.object.isRequired,
+  users: PropTypes.object.isRequired
 };
 
 export default HomePage;

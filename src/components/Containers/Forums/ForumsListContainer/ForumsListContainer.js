@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import ForumsList from '../../components/Forums/ForumsList';
+import ForumsList from '../../../Forums/ForumsList';
 
 const mapStateToProps = ({data}) => {
   const categories = data['categories'];

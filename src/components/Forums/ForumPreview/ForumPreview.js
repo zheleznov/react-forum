@@ -8,19 +8,19 @@ const ForumPreview = ({description, url, title, subForums, classes}) => {
 
   if (subForums) {
     const subForumsToRender = subForums.map(subForum => (
-        <li key={subForum['.key']}>
-          <Link to={`/forum/${subForum['.key']}`}>{subForum.name}</Link>
-        </li>
-      ),
+            <li key={subForum['.key']}>
+              <Link to={`/forum/${subForum['.key']}`}>{subForum.name}</Link>
+            </li>
+        ),
     );
     content = <ul className="subforums">{subForumsToRender}</ul>;
   }
 
   return (
-    <div className="forum-details">
-      <Link className={classes || 'text-xlarge'} to={url}>{title}</Link>
-      {content}
-    </div>
+      <div className="forum-details">
+        <Link className={classes || 'text-xlarge'} to={url}>{title}</Link>
+        {content}
+      </div>
   );
 };
 
@@ -29,6 +29,7 @@ ForumPreview.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   subForums: PropTypes.array,
+  classes: PropTypes.string,
 };
 
 export default ForumPreview;

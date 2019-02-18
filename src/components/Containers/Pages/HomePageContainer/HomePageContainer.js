@@ -1,13 +1,12 @@
 import {connect} from 'react-redux';
-import HomePage from '../../components/Pages/HomePage';
+import HomePage from '../../../Pages/HomePage';
 
 const mapStateToProps = ({data}) => {
-  const categories = data['categories'];
-  const forums = data['forums'];
+  // return categories Ids
+  const categoriesIds = Object.keys(data['categories']);
 
   return {
-    categories,
-    forums
+    categoriesIds,
   };
 };
 

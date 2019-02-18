@@ -1,24 +1,19 @@
 import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-import ForumsList from '../../Forums/ForumsList';
+import ForumsListContainer from '../../Containers/Forums/ForumsListContainer';
 
 class HomePage extends Component {
   render() {
-    const {categories, forums, posts, users, threads} = this.props;
+    const {categoriesIds} = this.props;
 
     return (
         <Fragment>
-          {Object.values(categories).map(category => {
+          {categoriesIds.map(categoryId => {
             return (
-                <ForumsList
-                    key={category['.key']}
-                    categories={categories}
-                    forums={forums}
-                    categoryId={category['.key']}
-                    posts={posts}
-                    users={users}
-                    threads={threads}
+                <ForumsListContainer
+                    key={categoryId}
+                    categoryId={categoryId}
                 />
             );
           })}
@@ -28,10 +23,7 @@ class HomePage extends Component {
 }
 
 HomePage.propTypes = {
-  categories: PropTypes.object.isRequired,
-  forums: PropTypes.object.isRequired,
-  posts: PropTypes.object.isRequired,
-  users: PropTypes.object.isRequired
+  categoriesIds: PropTypes.array.isRequired,
 };
 
 export default HomePage;

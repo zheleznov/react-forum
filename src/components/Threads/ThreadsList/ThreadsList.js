@@ -1,34 +1,28 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './ThreadsList.css';
 
 import ListTitle from '../../Shared/ListTitle';
-import ThreadListItem from '../ThreadListItem';
+import ThreadListItemContainer from '../../Containers/Threads/ThreadListItemContainer';
 
-class ThreadsList extends Component {
-  render() {
-    const {threads, users, posts} = this.props;
+const ThreadsList = ({forumThreads}) => {
+  return (
+      <div className="thread-list push-top">
 
-    return (
-        <div className="thread-list push-top">
-          <ListTitle title="Threads"/>
-          {threads.map(thread => (
-              <ThreadListItem
+        <ListTitle title="Threads"/>
+
+        {forumThreads.map(thread => (
+            <ThreadListItemContainer
                 thread={thread}
                 key={thread['.key']}
-                users={users}
-                posts={posts}
-              />
-          ))}
-        </div>
-    );
-  }
-}
+            />
+        ))}
+      </div>
+  );
+};
 
 ThreadsList.propTypes = {
-  threads: PropTypes.array.isRequired,
-  users: PropTypes.object.isRequired,
-  posts: PropTypes.object.isRequired
+  forumThreads: PropTypes.array.isRequired,
 };
 
 export default ThreadsList;

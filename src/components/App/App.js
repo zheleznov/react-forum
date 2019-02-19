@@ -9,9 +9,10 @@ import ErrorBoundary from '../ErrorBoundary';
 import HomePageContainer from '../Containers/Pages/HomePageContainer';
 import CategoryForumsPageContainer from '../../components/Containers/Pages/CategorieForumsPageContainer';
 import ThreadsPageContainer from '../Containers/Pages/ThreadsPageContainer';
+import PostsPageContainer from '../../components/Containers/Pages/PostsPageContainer';
 import NewThreadPage from '../../components/Pages/NewThreadPage';
-import PageNotFound from '../PageNotFound';
-import PageContent from '../PageContent';
+
+import PageNotFound from '../../components/Pages/PageNotFound';
 
 // import '../../services/data-service';
 
@@ -29,12 +30,13 @@ class App extends Component {
               <Fragment>
                 <Header/>
                 <Switch>
-                  <PageContent>
+                  <Fragment>
                     <Route path="/" exact component={HomePageContainer}/>
                     <Route path="/category/:categoryId" exact component={CategoryForumsPageContainer}/>
                     <Route path="/forum/:forumId" component={ThreadsPageContainer}/>
+                    <Route path="/thread/:threadId" component={PostsPageContainer}/>
                     <Route path="/new-thread" component={NewThreadPage}/>
-                  </PageContent>
+                  </Fragment>
                   <Route component={PageNotFound}/>
                 </Switch>
               </Fragment>

@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import ForumsListContainer from '../../Containers/Forums/ForumsListContainer';
 
 class CategoryForumsPage extends React.Component {
@@ -8,12 +8,12 @@ class CategoryForumsPage extends React.Component {
     const category = categories[categoryId];
 
     return (
-        <Fragment>
-          <div className="col-full push-top">
-            <h1>{category.name}</h1>
-          </div>
-          <ForumsListContainer/>
-        </Fragment>
+        <div className="container">
+            <div className="col-full push-top">
+              <h1>{category.name}</h1>
+            </div>
+            <ForumsListContainer/>
+        </div>
     );
   }
 }

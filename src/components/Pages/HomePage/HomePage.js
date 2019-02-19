@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import ForumsListContainer from '../../Containers/Forums/ForumsListContainer';
@@ -8,16 +8,18 @@ class HomePage extends Component {
     const {categoriesIds} = this.props;
 
     return (
-        <Fragment>
-          {categoriesIds.map(categoryId => {
-            return (
-                <ForumsListContainer
-                    key={categoryId}
-                    categoryId={categoryId}
-                />
-            );
-          })}
-        </Fragment>
+        <div className="container">
+          <div className="col-full">
+            {categoriesIds.map(categoryId => {
+              return (
+                  <ForumsListContainer
+                      key={categoryId}
+                      categoryId={categoryId}
+                  />
+              );
+            })}
+          </div>
+        </div>
     );
   }
 }

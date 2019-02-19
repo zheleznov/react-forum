@@ -21,27 +21,29 @@ function ThreadsPage({categories, forums, match, threads}) {
   }
 
   return (
-      <Fragment>
-        <Breadcrumbs/>
+      <div className="container">
+        <div className="col-full">
+          <Breadcrumbs/>
 
-        <ThreadsHeader
-            name={currentForum.name}
-            description={currentForum.description}
-        />
+          <ThreadsHeader
+              name={currentForum.name}
+              description={currentForum.description}
+          />
 
-        {subForums.map(subForum => (
-            <div className="forum-list" key={subForum['.key']}>
-              <ListTitle title={subForum.name}/>
+          {subForums.map(subForum => (
+              <div className="forum-list" key={subForum['.key']}>
+                <ListTitle title={subForum.name}/>
 
-              <ForumListItem
-                  forum={subForum}
-                  classes="forum-name"
-              />
-            </div>
-        ))}
+                <ForumListItem
+                    forum={subForum}
+                    classes="forum-name"
+                />
+              </div>
+          ))}
 
-        <ThreadsList forumThreads={forumThreads}/>
-      </Fragment>
+          <ThreadsList forumThreads={forumThreads}/>
+        </div>
+      </div>
   );
 }
 

@@ -1,8 +1,8 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 
 const NewThreadPage = (props) => {
   return (
-      <Fragment>
+      <div className="container">
         <div className="col-full push-top">
 
           <h1>Create new thread in <i>Cooking</i></h1>
@@ -11,7 +11,7 @@ const NewThreadPage = (props) => {
             <div className="form-group">
               <label htmlFor="thread_title">Title:</label>
               <input type="text" id="thread_title" className="form-input"
-                     name="title" />
+                     name="title"/>
             </div>
 
             <div className="form-group">
@@ -28,7 +28,7 @@ const NewThreadPage = (props) => {
             </div>
           </form>
         </div>
-      </Fragment>
+      </div>
   );
 };
 

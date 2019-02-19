@@ -26,7 +26,6 @@ class Breadcrumbs extends React.Component {
     let forum;
 
     if (categoryPage) {
-      debugger;
       category = <li><Link to="/category.html">{categories[catId].name}</Link></li>;
     }
 
@@ -40,7 +39,7 @@ class Breadcrumbs extends React.Component {
             <li>
               <Link to="/"><i className="fa fa-home fa-btn"></i>Home</Link>
             </li>
-            {category}
+            {forum}
             {forum}
           </ul>
         </div>

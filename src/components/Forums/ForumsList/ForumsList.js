@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withRouter} from "react-router-dom";
+import {withRouter} from 'react-router-dom';
 import './ForumsList.css';
 
 import ListTitle from '../../Shared/ListTitle';
@@ -8,11 +8,14 @@ import ForumListItem from '../ForumListItem';
 
 class ForumsList extends React.Component {
   render() {
-    const {forums, match, categories, categoryId, users, posts, threads} = this.props;
+    debugger;
+    const {forums, match, categories, categoryId} = this.props;
     const id = categoryId || (match && match.params.categoryId);
     const categoryName = categories[id].name;
 
+    // get forums to render
     const forumsToRender = Object.values(forums).filter(forum => {
+      // add sub forums
       if (forum['categoryId'] === id && forum.forums) {
         forum.subForums = Object.keys(forum.forums)
             .map(subForumId => forums[subForumId]);
@@ -31,10 +34,6 @@ class ForumsList extends React.Component {
               <ForumListItem
                   key={forum['.key']}
                   forum={forum}
-                  forums={forums}
-                  posts={posts}
-                  users={users}
-                  threads={threads}
               />
           ))}
         </div>
@@ -47,8 +46,6 @@ ForumsList.propTypes = {
   forums: PropTypes.object.isRequired,
   match: PropTypes.object,
   categoryId: PropTypes.string,
-  posts: PropTypes.object.isRequired,
-  users: PropTypes.object.isRequired
 };
 
 export default withRouter(ForumsList);

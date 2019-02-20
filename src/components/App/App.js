@@ -11,6 +11,7 @@ import CategoryForumsPageContainer from '../../components/Containers/Pages/Categ
 import ThreadsPageContainer from '../Containers/Pages/ThreadsPageContainer';
 import PostsPageContainer from '../../components/Containers/Pages/PostsPageContainer';
 import NewThreadPage from '../../components/Pages/NewThreadPage';
+import RegisterPage from '../Pages/RegisterPage';
 
 import PageNotFound from '../../components/Pages/PageNotFound';
 
@@ -36,6 +37,7 @@ class App extends Component {
                     <Route path="/forum/:forumId" component={ThreadsPageContainer}/>
                     <Route path="/thread/:threadId" component={PostsPageContainer}/>
                     <Route path="/new-thread" component={NewThreadPage}/>
+                    <Route path="/registration" component={RegisterPage}/>
                   </Fragment>
                   <Route component={PageNotFound}/>
                 </Switch>

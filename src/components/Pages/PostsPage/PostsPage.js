@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import Breadcrumbs from '../../Shared/Breadcrumbs/Breadcrumbs';
 import PostsList from '../../Posts/PostsList';
 import {Link} from 'react-router-dom';
+import ForumsStatsContainer from '../../Containers/Forums/ForumStatsContainer';
 
 const PostsPage = ({match, threads, users, posts}) => {
   const threadId = match.params.threadId;
@@ -18,18 +19,25 @@ const PostsPage = ({match, threads, users, posts}) => {
   });
 
   return (
-      <div className="container">
-        <div className="col-large">
-          <Breadcrumbs/>
-          <h1>{currentThread.title}</h1>
-          <p>
-            By <Link to={`/profile/${userId}`} className="link-unstyled">{user.name}</Link>, {createdTime} hours ago.
-            <span className="hide-mobile text-faded text-small">{replyCount} replies by {contributorsCount} contributors</span>
-          </p>
+      <Fragment>
+        <div className="container">
+          <div className="col-large">
+            <Breadcrumbs/>
+            <h1>{currentThread.title}</h1>
+            <p>
+              By <Link to={`/profile/${userId}`}
+                       className="link-unstyled">{user.name}</Link>, {createdTime} hours
+              ago.
+              <span
+                  className="hide-mobile text-faded text-small">{replyCount} replies by {contributorsCount} contributors</span>
+            </p>
 
-          <PostsList posts={threadPosts}/>
+            <PostsList posts={threadPosts}/>
+          </div>
         </div>
-      </div>
+
+        <ForumsStatsContainer/>
+      </Fragment>
   );
 };
 

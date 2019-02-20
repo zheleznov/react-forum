@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import ForumsListContainer from '../../Containers/Forums/ForumsListContainer';
+import ForumsStatsContainer from '../../Containers/Forums/ForumStatsContainer';
 
 class CategoryForumsPage extends React.Component {
   render() {
@@ -8,12 +9,17 @@ class CategoryForumsPage extends React.Component {
     const category = categories[categoryId];
 
     return (
-        <div className="container">
+        <Fragment>
+          <div className="container">
             <div className="col-full push-top">
               <h1>{category.name}</h1>
             </div>
-            <ForumsListContainer/>
-        </div>
+            <div className="col-full">
+              <ForumsListContainer/>
+            </div>
+          </div>
+          <ForumsStatsContainer/>
+        </Fragment>
     );
   }
 }

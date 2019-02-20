@@ -5,6 +5,7 @@ import ListTitle from '../../Shared/ListTitle';
 import ForumListItem from '../../Forums/ForumListItem';
 import Breadcrumbs from '../../Shared/Breadcrumbs/Breadcrumbs';
 import ThreadsHeader from '../../Threads/ThreadsHeader';
+import ForumsStatsContainer from '../../Containers/Forums/ForumStatsContainer';
 
 function ThreadsPage({categories, forums, match, threads}) {
   const forumId = match.params.forumId;
@@ -21,29 +22,32 @@ function ThreadsPage({categories, forums, match, threads}) {
   }
 
   return (
-      <div className="container">
-        <div className="col-full">
-          <Breadcrumbs/>
+      <Fragment>
+        <div className="container">
+          <div className="col-full">
+            <Breadcrumbs/>
 
-          <ThreadsHeader
-              name={currentForum.name}
-              description={currentForum.description}
-          />
+            <ThreadsHeader
+                name={currentForum.name}
+                description={currentForum.description}
+            />
 
-          {subForums.map(subForum => (
-              <div className="forum-list" key={subForum['.key']}>
-                <ListTitle title={subForum.name}/>
+            {subForums.map(subForum => (
+                <div className="forum-list" key={subForum['.key']}>
+                  <ListTitle title={subForum.name}/>
 
-                <ForumListItem
-                    forum={subForum}
-                    classes="forum-name"
-                />
-              </div>
-          ))}
+                  <ForumListItem
+                      forum={subForum}
+                      classes="forum-name"
+                  />
+                </div>
+            ))}
 
-          <ThreadsList forumThreads={forumThreads}/>
+            <ThreadsList forumThreads={forumThreads}/>
+          </div>
         </div>
-      </div>
+        <ForumsStatsContainer/>
+      </Fragment>
   );
 }
 

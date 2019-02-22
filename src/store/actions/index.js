@@ -1,8 +1,13 @@
-import actions from './actions';
-import store from '../../store';
+import userActions from './user.actions';
+import categoriesActions from './categories.actions';
+import forumsActions from './forums.actions';
+import threadsActions from './threads.actions';
+import postsActions from './posts.actions';
 
-export default {
-  getData() {
-    return store.dispatch(actions.getData());
-  }
-};
+export {
+  userActions,
+  categoriesActions,
+  forumsActions,
+  threadsActions,
+  postsActions,
+}

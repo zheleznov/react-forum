@@ -1,7 +1,5 @@
-import dataConstants from './data.constants';
-import userConstants from './user.constants';
+import constants from './data.constants';
 
 export {
-  dataConstants,
-  userConstants,
+  constants,
 };

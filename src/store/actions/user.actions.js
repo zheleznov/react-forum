@@ -1,36 +1,37 @@
-import {userConstants} from '../constants';
+import {constants} from '../constants';
 import {userService} from '../../services';
 import store from '../store';
 
-function registerUser(user) {
-  return {
-    type: userConstants.REGISTER_REQUEST,
-    payload: user,
-  };
-}
-
-function getAllUsers() {
-  store.dispatch(request());
-
-  userService.getAllUsers().then(users => {
-    store.dispatch(success(users));
-  }).catch(error => {
-    store.dispatch(failure(error));
-  });
-
+async function registerUser({name, username, email, password, avatar}) {
   function request() {
-    return {type: userConstants.FETCH_USERS_REQUEST};
+    return {type: constants.REGISTER_USER_REQUEST};
   }
 
-  function success(users) {
-    return {type: userConstants.FETCH_USERS_SUCCESS, users};
+  function success(user) {
+    return {type: constants.REGISTER_USER_SUCCESS, user};
   }
 
   function failure(error) {
-    return {type: userConstants.FETCH_USERS_FAILURE, error};
+    return {type: constants.REGISTER_USER_FAILURE, error};
+  }
+
+  store.dispatch(request());
+
+  try {
+    const user = await userService.signUpNewUser(email, password);
+    store.dispatch(success({
+      _key: user.uid,
+      name,
+      username,
+      email,
+      avatar,
+    }));
+  } catch (e) {
+    store.dispatch(failure(e));
+    console.info(e);
   }
 }
 
 export default {
-  getAllUsers,
+  registerUser,
 };

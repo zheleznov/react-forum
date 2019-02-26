@@ -1,13 +1,10 @@
 import {connect} from 'react-redux';
 import ForumsList from '../../../Forums/ForumsList';
 
-const mapStateToProps = ({data}) => {
-  const categories = data['categories'];
-  const forums = data['forums'];
-
+const mapStateToProps = ({data: {categories, forums}}) => {
   return {
-    forums,
     categories,
+    forums,
   };
 };
 

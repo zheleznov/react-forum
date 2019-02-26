@@ -1,10 +1,7 @@
 import {connect} from 'react-redux';
 import ThreadListItem from '../../../Threads/ThreadListItem';
 
-const mapStateToProps = ({data}) => {
-  const users = data['users'];
-  const posts = data['posts'];
-
+const mapStateToProps = ({data: {users, posts}}) => {
   return {
     users,
     posts,

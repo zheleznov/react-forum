@@ -5,8 +5,8 @@ import store from '../store';
 function getAllItemsFromCollection() {
   store.dispatch(request());
 
-  dataService.getAllItemsFromCollection('forums').then(users => {
-    store.dispatch(success(users));
+  dataService.getAllItemsFromCollection('forums').then(forums => {
+    store.dispatch(success(forums));
   }).catch(error => {
     store.dispatch(failure(error));
   });

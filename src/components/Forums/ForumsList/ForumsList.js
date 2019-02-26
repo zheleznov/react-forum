@@ -8,18 +8,12 @@ import ForumListItem from '../ForumListItem';
 
 class ForumsList extends React.Component {
   render() {
-    debugger;
     const {forums, match, categories, categoryId} = this.props;
     const id = categoryId || (match && match.params.categoryId);
     const categoryName = categories[id].name;
 
     // get forums to render
     const forumsToRender = Object.values(forums).filter(forum => {
-      // add sub forums
-      if (forum['categoryId'] === id && forum.forums) {
-        forum.subForums = Object.keys(forum.forums)
-            .map(subForumId => forums[subForumId]);
-      }
       return forum['categoryId'] === id;
     });
 
@@ -32,7 +26,7 @@ class ForumsList extends React.Component {
 
           {forumsToRender.map(forum => (
               <ForumListItem
-                  key={forum['.key']}
+                  key={forum['_key']}
                   forum={forum}
               />
           ))}

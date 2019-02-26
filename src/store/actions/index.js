@@ -1,13 +1,7 @@
+import dataActions from './data.actions';
 import userActions from './user.actions';
-import categoriesActions from './categories.actions';
-import forumsActions from './forums.actions';
-import threadsActions from './threads.actions';
-import postsActions from './posts.actions';
 
 export {
+  dataActions,
   userActions,
-  categoriesActions,
-  forumsActions,
-  threadsActions,
-  postsActions,
-}
+};

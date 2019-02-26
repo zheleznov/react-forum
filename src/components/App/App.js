@@ -1,8 +1,10 @@
 import React, {Component, Fragment} from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import firebase from 'firebase/app';
 import {Provider} from 'react-redux';
 import store from '../../store/store';
-import actions from '../../store/actions';
+import {dataActions} from '../../store/actions';
+
 
 import Header from '../Header';
 import ErrorBoundary from '../ErrorBoundary';
@@ -12,15 +14,21 @@ import ThreadsPageContainer from '../Containers/Pages/ThreadsPageContainer';
 import PostsPageContainer from '../../components/Containers/Pages/PostsPageContainer';
 import NewThreadPage from '../../components/Pages/NewThreadPage';
 import RegisterPage from '../Pages/RegisterPage';
-
 import PageNotFound from '../../components/Pages/PageNotFound';
 
-// import '../../services/data-service';
-
+var config = {
+  apiKey: "AIzaSyDIIBhOVzPInjJZOggPsRESJ_U7MS30VAI",
+  authDomain: "react-forum-2f18e.firebaseapp.com",
+  databaseURL: "https://react-forum-2f18e.firebaseio.com",
+  projectId: "react-forum-2f18e",
+  storageBucket: "react-forum-2f18e.appspot.com",
+  messagingSenderId: "623519307159"
+};
 
 class App extends Component {
   componentDidMount() {
-    actions.getData();
+    firebase.initializeApp(config);
+    dataActions.getAllItemsFromCollection();
   }
 
   render() {

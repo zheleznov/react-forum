@@ -6,7 +6,7 @@ function MainNavbar() {
   return (
       <ul>
         <li className="navbar-item">
-          <NavLink to="/register" activeClassName="active">Register</NavLink>
+          <NavLink to="/registration" activeClassName="active">Register</NavLink>
         </li>
 
         <li className="navbar-item">

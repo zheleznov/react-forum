@@ -1,9 +1,7 @@
 import {connect} from 'react-redux';
 import ForumsStats from '../../../Forums/ForumStats';
 
-const mapStateToProps = ({data}) => {
-  const stats = data['stats'];
-
+const mapStateToProps = ({data: {stats}}) => {
   return {
     stats,
   };

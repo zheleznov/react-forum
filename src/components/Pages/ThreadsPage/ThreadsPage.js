@@ -6,49 +6,60 @@ import ForumListItem from '../../Forums/ForumListItem';
 import Breadcrumbs from '../../Shared/Breadcrumbs/Breadcrumbs';
 import ThreadsHeader from '../../Threads/ThreadsHeader';
 import ForumsStatsContainer from '../../Containers/Forums/ForumStatsContainer';
+import Spinner from '../../Shared/Spinner';
+import Layout from '../HomePage/HomePage';
 
 function ThreadsPage({categories, forums, match, threads}) {
   const forumId = match.params.forumId;
-  const currentForum = forums[forumId];
-  const forumThreads = Object.values(threads).filter(thread => {
-    return thread['forumId'] === forumId;
-  });
-  let subForums = [];
 
-  if (currentForum.forums) {
-    subForums = Object.keys(currentForum.forums).map(subForumId => {
-      return forums[subForumId];
+  if (categories) {
+    const currentForum = forums[forumId];
+    const forumThreads = Object.values(threads).filter(thread => {
+      return thread['forumId'] === forumId;
     });
-  }
+    let subForums = [];
 
-  return (
-      <Fragment>
-        <div className="container">
-          <div className="col-full">
-            <Breadcrumbs/>
+    if (currentForum.forums) {
+      subForums = Object.keys(currentForum.forums).map(subForumId => {
+        return forums[subForumId];
+      });
+    }
 
-            <ThreadsHeader
-                name={currentForum.name}
-                description={currentForum.description}
-            />
+    return (
+        <Fragment>
+          <div className="container">
+            <div className="col-full">
+              <Breadcrumbs/>
 
-            {subForums.map(subForum => (
-                <div className="forum-list" key={subForum['.key']}>
-                  <ListTitle title={subForum.name}/>
+              <ThreadsHeader
+                  name={currentForum.name}
+                  description={currentForum.description}
+              />
 
-                  <ForumListItem
-                      forum={subForum}
-                      classes="forum-name"
-                  />
-                </div>
-            ))}
+              {subForums.map(subForum => (
+                  <div className="forum-list" key={subForum['_key']}>
+                    <ListTitle title={subForum.name}/>
 
-            <ThreadsList forumThreads={forumThreads}/>
+                    <ForumListItem
+                        forum={subForum}
+                        classes="forum-name"
+                    />
+                  </div>
+              ))}
+
+              <ThreadsList forumThreads={forumThreads}/>
+            </div>
           </div>
-        </div>
-        <ForumsStatsContainer/>
-      </Fragment>
-  );
+          <ForumsStatsContainer/>
+        </Fragment>
+    );
+  } else {
+    return (
+        <Layout>
+          <Spinner/>
+        </Layout>
+    )
+  }
 }
 
 export default withRouter(ThreadsPage);

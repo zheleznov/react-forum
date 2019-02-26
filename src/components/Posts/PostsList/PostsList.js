@@ -8,7 +8,7 @@ const PostsList = ({posts}) => {
         {posts.map(post => (
             <PostsListItemContainer
                 post={post}
-                key={post['.key']}
+                key={post}
             />
         ))}
       </div>

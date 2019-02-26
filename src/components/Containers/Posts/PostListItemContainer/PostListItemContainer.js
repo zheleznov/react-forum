@@ -1,12 +1,10 @@
 import {connect} from 'react-redux';
 import PostListItem from '../../../Posts/PostsListItem';
 
-const mapStateToProps = ({data}) => {
-  // return categories Ids
-  const users = data['users'];
-
+const mapStateToProps = ({data: {users, posts}}) => {
   return {
     users,
+    posts
   };
 };
 

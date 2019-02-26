@@ -2,9 +2,9 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 
-function signUpNewUser(user) {
+function signUpNewUser(email, password) {
   return firebase.auth()
-      .createUserWithEmailAndPassword(user.email, user.password);
+      .createUserWithEmailAndPassword(email, password);
 }
 
 function getAllUsers() {

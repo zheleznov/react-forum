@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import './ForumPreview.css';
 
-const ForumPreview = ({description, url, title, subForums, classes}) => {
+const ForumPreview = ({description, url, title, forumsIds, classes, forums}) => {
   let content = <p className="forum-description">{description}</p>;
 
-  if (subForums) {
-    const subForumsToRender = subForums.map(subForum => (
-            <li key={subForum['.key']}>
-              <Link to={`/forum/${subForum['.key']}`}>{subForum.name}</Link>
+  if (forumsIds) {
+    const subForumsToRender = Object.keys(forumsIds).map(id => (
+            <li key={id}>
+              <Link to={`/forum/${id}`}>{forums[id].name}</Link>
             </li>
         ),
     );
@@ -24,6 +25,12 @@ const ForumPreview = ({description, url, title, subForums, classes}) => {
   );
 };
 
+const mapStateToProps = ({data: {forums}}) => {
+  return {
+    forums
+  }
+};
+
 ForumPreview.propTypes = {
   url: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
@@ -32,4 +39,4 @@ ForumPreview.propTypes = {
   classes: PropTypes.string,
 };
 
-export default ForumPreview;
+export default connect(mapStateToProps)(ForumPreview);

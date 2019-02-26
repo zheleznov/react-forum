@@ -1,16 +1,11 @@
 import {connect} from 'react-redux';
 import PostsPage from '../../../Pages/PostsPage';
 
-const mapStateToProps = ({data}) => {
-  // return categories Ids
-  const threads = data['threads'];
-  const users = data['users'];
-  const posts = Object.values(data['posts']);
-
+const mapStateToProps = ({data: {threads, users, posts}}) => {
   return {
     threads,
     users,
-    posts
+    posts,
   };
 };
 

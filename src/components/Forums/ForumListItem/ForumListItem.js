@@ -10,10 +10,10 @@ const ForumListItem = ({forum, classes}) => {
   return (
       <div className="forum-listing">
         <ForumPreview
-            url={`/forum/${forum['.key']}`}
+            url={`/forum/${forum['_key']}`}
             title={forum.name}
             description={forum.description}
-            subForums={forum.subForums}
+            forumsIds={forum.forums}
             classes={classes}
         />
         <ForumThreadsCounter

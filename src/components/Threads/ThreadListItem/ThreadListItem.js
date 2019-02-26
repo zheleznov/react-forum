@@ -3,24 +3,15 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './ThreadListItem.css';
 
-const ThreadListItem = (props) => {
-  const {thread, users, posts} = props;
+const ThreadListItem = ({thread, users, posts}) => {
   const threadUser = users[thread['userId']];
   const lastPost = posts[thread['lastPostId']];
-  const lastPostUser = users[lastPost['userId']];
+  const lastPostUser = lastPost && users[lastPost['userId']];
+  const timeDiferense = ((Date.now() - thread.lastPostAt) / 1000 / 60 / 60).toFixed();
+  let activity;
 
-  return (
-      <div className="thread">
-        <div>
-          <p>
-            <Link to={`/thread/${thread['.key']}`}>{thread.title}</Link>
-          </p>
-          <p className="text-faded text-xsmall">
-            By <Link
-              to={`/profile/${threadUser['.key']}`}>{threadUser.name}</Link>, {thread.publishedAt}.
-          </p>
-        </div>
-
+  if(lastPost) {
+    activity = (
         <div className="activity">
           <p className="replies-count">
             {Object.keys(thread.posts).length} reply
@@ -31,11 +22,27 @@ const ThreadListItem = (props) => {
           <div>
             <p className="text-xsmall">
               <Link
-                  to={`/profile/${lastPostUser['.key']}`}>{lastPostUser.name}</Link>
+                  to={`/profile/${lastPostUser['_key']}`}>{lastPostUser.name}</Link>
             </p>
-            <p className="text-xsmall text-faded">{thread.lastPostAt}</p>
+            <p className="text-xsmall text-faded">{timeDiferense} hours ago</p>
           </div>
         </div>
+    )
+  }
+
+  return (
+      <div className="thread">
+        <div>
+          <p>
+            <Link to={`/thread/${thread['_key']}`}>{thread.title}</Link>
+          </p>
+          <p className="text-faded text-xsmall">
+            By <Link
+              to={`/profile/${threadUser['_key']}`}>{threadUser.name}</Link>, {thread.publishedAt}.
+          </p>
+        </div>
+
+        {activity}
       </div>
   );
 };

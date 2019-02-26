@@ -4,17 +4,17 @@ import PropTypes from 'prop-types';
 
 const PostUserInfo = ({user}) => {
   const {posts, threads} = user;
-  const postsCount = posts ? Object.keys(posts).length : 0;
-  const threadsCount = threads ? Object.keys(threads).length : 0;
+  const postsCount = posts ? posts.length : 0;
+  const threadsCount = threads ? threads.length : 0;
 
   return (
       <div className="user-info">
-        <Link to={`/profile/${user['.key']}`}
+        <Link to={`/profile/${user['_key']}`}
               className="user-name">
           {user.name}
         </Link>
 
-        <Link to={`/profile/${user['.key']}`}>
+        <Link to={`/profile/${user['_key']}`}>
           <img className="avatar-large"
                src={user.avatar}
                alt=""

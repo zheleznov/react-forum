@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import Input from '../Input';
+import {withRouter} from 'react-router-dom';
+
+import {userActions} from '../../../store/actions';
 
 class RegisterForm extends Component {
   state = {
@@ -79,9 +82,12 @@ class RegisterForm extends Component {
     });
   };
 
-  registerUser = (e) => {
+  registerUser = async (e) => {
     e.preventDefault();
 
+    await userActions.registerUser(this.state);
+    alert('Registration complete. You will move to Start Page');
+    this.props.history.push('/');
   };
 
   render() {
@@ -129,4 +135,4 @@ class RegisterForm extends Component {
   }
 }
 
-export default RegisterForm;
+export default withRouter(RegisterForm);
